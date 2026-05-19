@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vaultrip"
+version = "0.1.0"
+description = "Post-exploitation credential harvesting and extraction engine"
+readme = "README.md"
+license = { text = "AGPL-3.0-or-later" }
+requires-python = ">=3.10"
+authors = [
+  { name = "CommonHuman-Lab" },
+]
+keywords = ["security", "pentest", "credentials", "post-exploitation", "kerberos"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: GNU Affero General Public License v3",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Security",
+]
+dependencies = [
+  "requests>=2.28.0",
+  "urllib3>=1.26.0",
+  "commonhuman-cli",
+  "commonhuman-core",
+  "commonhuman-payloads",
+]
+
+[project.optional-dependencies]
+impacket = ["impacket>=0.11.0"]
+ssh      = ["commonhuman-core[ssh]"]
+attack   = ["commonhuman-core[smb]"]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+  "mypy>=1.0",
+  "ruff>=0.4",
+  "types-requests",
+]
+
+[project.scripts]
+vaultrip = "vaultrip.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["vaultrip"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts   = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["vaultrip"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+fail_under   = 100
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = false
+ignore_missing_imports = true
+warn_return_any = true
+warn_unused_ignores = true
