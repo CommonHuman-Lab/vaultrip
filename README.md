@@ -8,10 +8,6 @@
   <a href="https://www.python.org/">
     <img src="https://img.shields.io/badge/Python-3.10+-black?style=for-the-badge&logo=python&logoColor=white" alt="Python">
   </a>
-  <img src="https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20WSL-white?style=for-the-badge&logo=linux&logoColor=black" alt="Platform">
-  <a href="https://github.com/CommonHuman-Lab/vaultrip/releases">
-    <img src="https://img.shields.io/badge/Version-0.1.0-black?style=for-the-badge&logo=semver&logoColor=white" alt="Version">
-  </a>
   <img src="https://img.shields.io/badge/Post--Exploitation-Credential%20Harvesting-white?style=for-the-badge&logo=gnuprivacyguard&logoColor=black" alt="Post-Exploitation">
 </p>
 <!-- markdownlint-enable MD033 -->
