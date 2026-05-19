@@ -20,6 +20,7 @@ python3 -m venv .venv && source .venv/bin/activate
 pip install vaultrip
 pip install vaultrip[impacket]  # + offline LSASS / SAM / NTDS.dit parsing
 pip install vaultrip[attack]    # + active attack modules (DCSync, PTH, ticket forging)
+pip install vaultrip[ssh]
 ```
 
 Or from source:
@@ -218,6 +219,7 @@ pip install -e .
 pip install -e ".[dev]"        # + pytest, mypy, ruff
 pip install -e ".[impacket]"   # + LSASS / SAM / NTDS parsing
 pip install -e ".[attack]"     # + DCSync / PTH / ticket forging
+pip install -e ".[ssh]"
 ```
 
 Requires Python 3.10+. On Kali and other Debian-based systems, the virtual env is required — system Python is externally managed.
