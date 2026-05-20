@@ -12,7 +12,7 @@ from __future__ import annotations
 import logging
 import os
 
-from commonhuman_payloads.creds.signatures import identify_dump
+from ...creds.signatures import identify_dump
 
 from ..reporter import DumpCredFinding, ScanResult
 

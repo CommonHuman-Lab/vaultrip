@@ -4,8 +4,8 @@
 Local filesystem credential sweep.
 
 Walks home directories and known system paths, checks for credential files
-using the commonhuman_payloads.creds.paths catalogue, and pattern-scans text
-files using commonhuman_payloads.creds.patterns.
+using the vaultrip.creds.paths catalogue, and pattern-scans text
+files using vaultrip.creds.patterns.
 """
 
 from __future__ import annotations
@@ -14,15 +14,15 @@ import logging
 import os
 import stat
 
-from commonhuman_payloads.creds.paths import (
+from ...creds.paths import (
     ALL_HOME_PATHS,
     ALL_SYSTEM_PATHS,
     INTERESTING_EXTENSIONS,
     INTERESTING_FILENAMES,
     CredPath,
 )
-from commonhuman_payloads.creds.patterns import ALL_PATTERNS, CredPattern
-from commonhuman_payloads.creds.signatures import is_dump_file
+from ...creds.patterns import ALL_PATTERNS, CredPattern
+from ...creds.signatures import is_dump_file
 
 from ..reporter import Confidence, FileCredFinding, ScanResult
 from .passive import PassiveInfo

@@ -15,7 +15,7 @@ import os
 import tempfile
 
 from commonhuman_core.ssh import SshClient
-from commonhuman_payloads.creds.patterns import ALL_PATTERNS
+from ...creds.patterns import ALL_PATTERNS
 
 from ..reporter import Confidence, FileCredFinding, ScanResult
 

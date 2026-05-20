@@ -13,7 +13,7 @@ from __future__ import annotations
 import logging
 import re
 
-from commonhuman_payloads.creds.patterns import ALL_PATTERNS
+from ...creds.patterns import ALL_PATTERNS
 
 from ..reporter import Confidence, MemoryCredFinding, ScanResult
 from .passive import PassiveInfo

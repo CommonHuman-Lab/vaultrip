@@ -15,7 +15,7 @@ import os
 import struct
 from datetime import datetime, timezone
 
-from commonhuman_payloads.creds.signatures import identify_dump
+from ...creds.signatures import identify_dump
 
 from ..reporter import KerberosTicketFinding, ScanResult
 from .passive import PassiveInfo
