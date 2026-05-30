@@ -96,6 +96,12 @@ vaultrip ~ -v
 # Write findings to JSON
 vaultrip ~ -o /tmp/findings.json
 
+# Stream JSON to stdout (pipeline-friendly)
+vaultrip ~ --json | jq .
+
+# Write plain-text summary to file
+vaultrip ~ --text /tmp/report.txt
+
 # Analyse an offline LSASS minidump (requires vaultrip[impacket])
 vaultrip --dumps /tmp/lsass.dmp
 
@@ -184,7 +190,9 @@ for f in result.dcsync:
 | `--ssh-key PATH` | — | SSH private key path |
 | `--ssh-pass PASS` | — | SSH password (prefer `--ssh-key`) |
 | `--ssh-port PORT` | `22` | SSH port |
-| `-o FILE` | — | Write findings as JSON |
+| `--json` | — | Emit findings as JSON to stdout (suppresses banner) |
+| `-o FILE` | — | Write JSON results to FILE |
+| `--text FILE` | — | Write plain-text summary to FILE |
 | `-v` | off | Verbose — show extracted credential values |
 | `--timeout SEC` | `30` | Per-operation timeout |
 
