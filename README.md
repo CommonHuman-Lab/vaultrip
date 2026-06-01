@@ -9,6 +9,9 @@
     <img src="https://img.shields.io/badge/Python-3.10+-black?style=for-the-badge&logo=python&logoColor=white" alt="Python">
   </a>
   <img src="https://img.shields.io/badge/Post--Exploitation-Credential%20Harvesting-white?style=for-the-badge&logo=gnuprivacyguard&logoColor=black" alt="Post-Exploitation">
+  <a href="https://github.com/CommonHuman-Lab/gloomproxy">
+    <img src="https://img.shields.io/badge/GloomProxy-Plugin-black?style=for-the-badge" alt="GloomProxy Plugin">
+  </a>
 </p>
 <!-- markdownlint-enable MD033 -->
 
@@ -214,6 +217,12 @@ for f in result.dcsync:
 | `--attack-cmd CMD` | Command to run after PTH (default: `whoami`) |
 | `--ptt-ticket PATH` | Path to `.ccache` or `.kirbi` to inject |
 | `--forge-silver-spn SPN` | SPN for silver ticket, e.g. `cifs/host.domain.local` |
+
+---
+
+## GloomProxy Plugin
+
+VaultRip ships pre-installed with [GloomProxy](https://github.com/CommonHuman-Lab/gloomproxy) and appears in the workspace UI out of the box — no extra setup needed.
 
 ---
 
