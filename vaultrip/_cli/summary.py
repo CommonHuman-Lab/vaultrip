@@ -4,7 +4,13 @@
 
 from __future__ import annotations
 
+import io
+import re as _re
+import sys
+
 from commonhuman_cli.colour import BOLD, CYAN, DIM, GREEN, RED, YELLOW
+
+_ANSI_RE = _re.compile(r"\x1b\[[0-9;]*m")
 
 from ..engine.reporter import (
     BrowserCredFinding,
@@ -186,3 +192,14 @@ def _footer(result: ScanResult) -> None:
     else:
         print(BOLD(f"  {RED(str(total))} credential finding(s) — review and remediate."))
     print()
+
+
+def format_summary(result) -> str:
+    """Return print_summary output as a plain string with ANSI codes stripped."""
+    buf = io.StringIO()
+    old, sys.stdout = sys.stdout, buf
+    try:
+        print_summary(result)
+    finally:
+        sys.stdout = old
+    return _ANSI_RE.sub("", buf.getvalue())

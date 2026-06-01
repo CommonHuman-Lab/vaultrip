@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 
 from commonhuman_cli.colour import CYAN, DIM
+from commonhuman_cli.entrypoint import add_output_args
 from commonhuman_cli.prompts import (
     prompt as _prompt,
 )
@@ -85,6 +86,8 @@ def interactive_prompts() -> argparse.Namespace:
         attack_user="", attack_hash="", attack_cmd="whoami",
         ptt_ticket="", forge_silver_spn="",
         output=output,
+        json_output=False,
+        text="",
         verbose=verbose,
         timeout=30,
     )
@@ -177,8 +180,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     # Output
     out = p.add_argument_group("output")
-    out.add_argument("-o", "--output",  default="", metavar="FILE",
-                     help="Write JSON results to FILE")
+    add_output_args(out)
     out.add_argument("-v", "--verbose", action="store_true",
                      help="Verbose output")
     out.add_argument("--timeout",       type=int, default=30,

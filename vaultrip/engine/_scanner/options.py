@@ -44,8 +44,6 @@ class ScanOptions:
         attack_cmd:      str = "whoami",        # command to run after PTH
         ptt_ticket:      str = "",              # path to .ccache or .kirbi to inject
         forge_silver_spn: str = "",             # SPN for silver ticket, e.g. cifs/host.domain
-        # --- Output ---------------------------------------------------------------
-        output:       str            = "",      # JSON output file path
         verbose:      bool           = False,
         timeout:      int            = 30,
     ) -> None:
@@ -84,6 +82,5 @@ class ScanOptions:
         self.ptt_ticket       = ptt_ticket.strip()
         self.forge_silver_spn = forge_silver_spn.strip()
 
-        self.output       = output.strip()
         self.verbose      = verbose
         self.timeout      = max(5, min(timeout, 300))

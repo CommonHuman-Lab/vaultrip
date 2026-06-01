@@ -23,10 +23,11 @@ for _p in (_PARENT, _HERE):
 
 from commonhuman_cli.colour import CYAN  # noqa: E402
 from commonhuman_cli.logging import setup_logging  # noqa: E402
+from commonhuman_cli.output import write_json_output, write_text_output  # noqa: E402
 
 from vaultrip import BANNER  # noqa: E402
 from vaultrip._cli.args import build_parser, interactive_prompts  # noqa: E402
-from vaultrip._cli.summary import print_summary  # noqa: E402
+from vaultrip._cli.summary import print_summary, format_summary  # noqa: E402
 from vaultrip.engine import ScanOptions, scan  # noqa: E402
 from vaultrip.engine.log import get_logger  # noqa: E402
 
@@ -51,10 +52,10 @@ def main() -> None:
     )
     if interactive:
         args = interactive_prompts()
-    else:
+    elif not args.json_output:
         print(CYAN(BANNER))
 
-    setup_logging(verbose=args.verbose, quiet=False, logger_name="vaultrip")
+    setup_logging(verbose=args.verbose, quiet=args.json_output, logger_name="vaultrip")
 
     target = os.path.expanduser(args.target or "~")
 
@@ -89,7 +90,6 @@ def main() -> None:
         attack_cmd       = getattr(args, "attack_cmd", "whoami"),
         ptt_ticket       = getattr(args, "ptt_ticket", ""),
         forge_silver_spn = getattr(args, "forge_silver_spn", ""),
-        output       = args.output,
         verbose      = args.verbose,
         timeout      = args.timeout,
     )
@@ -99,8 +99,14 @@ def main() -> None:
     result = scan(target=target, options=options)
 
     if args.output:
-        pass  # scan() already wrote the JSON file
-    else:
+        write_json_output(result, args.output)
+    if args.text:
+        write_text_output(format_summary(result), args.text)
+
+    if args.json_output:
+        import json as _json
+        print(_json.dumps(result.to_dict()))
+    elif not args.output:
         print_summary(result, verbose=args.verbose)
 
     sys.exit(0 if result.total_findings == 0 else 1)
