@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "vaultrip"
-version = "0.1.0"
+version = "0.1.1"
 description = "Post-exploitation credential harvesting and extraction engine"
 readme = "README.md"
 license = { text = "AGPL-3.0-or-later" }

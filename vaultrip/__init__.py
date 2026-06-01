@@ -29,7 +29,7 @@ from .engine.reporter import (
 )
 from .engine.scanner import scan
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 BANNER = r"""
  _    __            ____  ____  _
